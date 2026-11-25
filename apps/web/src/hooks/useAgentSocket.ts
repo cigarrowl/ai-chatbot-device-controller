@@ -11,7 +11,11 @@ export function useAgentSocket() {
   const connect = useCallback(async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
-    const ws = new WebSocket('ws://localhost:3001', ['chat', `token.${session.access_token}`]);
+    
+    // CHANGED LINE: Use environment variable, fallback to localhost for local dev
+    const wsUrl = import.meta.env.VITE_AGENT_WS_URL || 'ws://localhost:3001';
+    const ws = new WebSocket(wsUrl, ['chat', `token.${session.access_token}`]);
+    
     wsRef.current = ws;
     ws.onopen = () => setConnected(true);
     ws.onmessage = (e) => {
