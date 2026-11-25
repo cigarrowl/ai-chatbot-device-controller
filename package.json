@@ -1,0 +1,9 @@
+{
+  "name": "ai-device-controller",
+  "private": true,
+  "scripts": {
+    "dev:agent": "pnpm --filter @app/agent dev",
+    "dev:web": "pnpm --filter @app/web dev"
+  },
+  "devDependencies": { "typescript": "^5.4.0" }
+}

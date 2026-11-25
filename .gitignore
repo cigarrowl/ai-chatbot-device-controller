@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+.env.local
+.agent_trash/
+*.log
+.DS_Store
